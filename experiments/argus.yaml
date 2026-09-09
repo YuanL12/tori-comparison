@@ -1,0 +1,96 @@
+# Configuration for shape stretching experiment
+# This config defines parameters for geodesic energy optimization between two torus meshes
+
+# Number of optimization iterations
+n_iter: 5
+
+# Learning rate. L-BFGS: try 0.1 (stable) or 0.05 if still oscillating; Adam: 1e-6–1e-4
+lr: 1e-6
+
+# Optimizer type: "Adam", "SGD", or "LBFGS"
+optimizer: "Adam"
+
+# Weight for the shape stretching loss term
+# Higher values prioritize shape preservation (conformality) over other objectives
+area_loss_weight: 1
+shape_stretch_weight: 1
+
+# load mesh options
+normalize_area_to_one: true # normalize the area to one
+remesh_to_equilateral: false # remesh the mesh to have more equilateral triangles
+Tutte_embedding_type: "Uniform" # Uniform, coTan, MeanValue, Authalic
+# If true on a fresh run, select the Tutte type with smallest initial area+shape energy (see run.py).
+# If false, use Tutte_embedding_type. Resume always uses tutte_embedding_type stored in mesh_context.pt.
+Tutte_embedding_type_minimal: true
+
+# Path to the domain mesh and codomain mesh
+obj_path1: "data/synthetic/torus_ratio_0.2_n_theta_10_n_phi_10.obj"
+obj_path2: "data/synthetic/torus_ratio_0.2_n_theta_20_n_phi_10.obj"
+# a: "data/synthetic/torus_ratio_0.2_n_theta_10_n_phi_10.obj"
+# a2: "data/synthetic/torus_ratio_0.2_n_theta_20_n_phi_10.obj"
+# b: "data/synthetic/torus_ratio_0.5_n_theta_10_n_phi_10.obj"
+# b2: "data/synthetic/torus_ratio_0.5_n_theta_20_n_phi_10.obj"
+# c: "data/synthetic/torus_ratio_0.8_n_theta_10_n_phi_10.obj"
+# c2: "data/synthetic/torus_ratio_0.8_n_theta_20_n_phi_10.obj"
+# smaller ones: "test_irregular_torus.obj" "test_regular_torus.obj"
+
+# Whether to save subsampled UV trajectory (uv_pos_res.npy)
+save_uv_trajectories: false
+save_folder_path: "./"
+
+# Resumable optimization / checkpointing
+checkpoint_dir: "./checkpoints"
+checkpoint_filename: "checkpoint.pt"
+resume_from_checkpoint: true
+iters_to_save_checkpoint: 1000
+
+# Type of edge length calculation: "euclidean" or "geodesic"
+edge_length_type: "geodesic"
+
+# Geometry objective:
+#   - "area_shape" (area + shape stretch)
+#   - "dirichlet" (sum_i D_i * A_i)
+#   - "log_area_shape" (log-based area + shape objective)
+energy_objective: "area_shape"
+
+# Smooth max type: "none" (exact max), "logsumexp", "pnorm"
+smooth_max_type: "none"
+
+# Whether to cut on shortest generator
+cut_on_shortest_generator: true
+
+# Trial: swap codomain meridian/longitude (ReebGraphOriented path only).
+codomain_swap_generators: false
+
+# Random seed: torch/numpy; also drives Reeb height direction when
+# cut_on_shortest_generator is true (see function _sample_unit_direction in run_resumable.py).
+seed: 111
+
+# Energy plateau detection
+reset_plateau_steps_without_improvement: false
+energy_plateau_patience: 500
+energy_plateau_rel_tol: 1e-5
+
+# ReduceLROnPlateau on reconstructed energy (per optimization step).
+# vs EnergyPlateauDetector: the scheduler often reacts earlier (smaller patience, looser tol
+# than energy_plateau_rel_tol is possible—compare both in practice). The stopper may fire
+# later or first depending on noise/settings. Prefer tuning the stopper to fire later than
+# the scheduler: larger energy_plateau_patience and smaller energy_plateau_rel_tol than
+# reduce_lr_patience / reduce_lr_tol.
+reduce_lr_on_plateau: false
+resume_lr_scheduler_state: false # on resume, rebuild LR scheduler from current config (so reduce_lr_* changes take effect)
+lr_scheduler: "ReduceLROnPlateau"
+reduce_lr_ema: 0.44
+reduce_lr_factor: 0.5
+reduce_lr_patience: 2000
+reduce_lr_min_lr: 1.0e-7
+reduce_lr_tol: 1.0e-4
+reduce_lr_tol_mode: "rel"
+flip_reject_backoff_enabled: false
+flip_reject_backoff_factor: 0.5
+flip_reject_backoff_min_lr: 1.0e-10
+
+# Run name
+run_name: "a_vs_a2_geodesic"
+group_name: "test"
+use_wandb: false

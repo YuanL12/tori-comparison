@@ -1,0 +1,43 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build / tooling
+build/
+dist/
+*.egg-info/
+.python-version.bak
+
+# Experiment outputs
+checkpoints/
+**/checkpoints*/
+wandb/
+logs/
+plot_data/
+*.pt
+*.npy
+*.mp4
+*.csv
+
+# Large/generated media by default
+*.png
+*.svg
+*.pdf
+
+# Ignore meshes by default; track small fixtures explicitly.
+*.obj
+!data/fixtures/**/*.obj
+
+# Keep local full datasets out of git
+data/synthetic/
+data/real/
+experiments/data/
+experiments/baseline_methods/
+experiments/records/
+
+.vscode/
+.clang-format

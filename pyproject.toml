@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tori-comparison"
+version = "0.1.0"
+description = "Experiments and reproducibility code for comparing tori"
+requires-python = ">=3.10"
+dependencies = [
+  "shapecomp>=0.1,<0.2",
+  "numpy",
+  "scipy",
+  "torch",
+  "PyYAML",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib", "plotly", "pymeshlab", "trimesh"]
+tracking = ["wandb"]
+legacy = ["libigl", "meshplot", "icecream", "opencv-python"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Joint-development override. Remove once shapecomp is available from an
+# immutable install (tagged sibling checkout or package index).
+[tool.uv.sources]
+shapecomp = { path = "../shapecomp", editable = true }
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
