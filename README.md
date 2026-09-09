@@ -35,9 +35,9 @@ uv run python experiments/run.py --help
 
 For WandB: `uv sync --extra plot --extra tracking`.
 
-`pyproject.toml` currently pins ShapeComp to the sibling path via
-`[tool.uv.sources]`. After ShapeComp `v0.1.0` is tagged, switch to that immutable
-checkout or package artifact and regenerate `uv.lock`.
+`pyproject.toml` pins ShapeComp to the sibling path via `[tool.uv.sources]`.
+Check out ShapeComp at tag `v0.1.0` (do not track moving `main`). When a package
+index artifact exists, remove the path override and regenerate `uv.lock`.
 
 ## Install (Micromamba)
 
