@@ -19,7 +19,8 @@ dependencies = [
 [project.optional-dependencies]
 plot = ["matplotlib", "plotly", "pymeshlab", "trimesh"]
 tracking = ["wandb"]
-legacy = ["libigl", "meshplot", "icecream", "opencv-python"]
+# Optional legacy viz stack (libigl/meshplot/etc.) is intentionally omitted:
+# those packages are not reliably installable from the default indexes.
 
 [tool.setuptools.packages.find]
 where = ["src"]
