@@ -1,7 +1,7 @@
 # Tori Comparison
+Compare two triangulated tori without requiring landmarks or same triangulation/correspondence.
 
-Experiments and reproducibility code for comparing tori. Depends on the
-ShapeComp library (`shapecomp`), not as a Git submodule.
+Experiments and reproducibility code for paper: "Computing a Metric on the Shape Space of Tori", to be appear in ACM Transactions on Graphics 2026. 
 
 ## Layout
 
@@ -57,6 +57,11 @@ micromamba run -n tori-comparison \
   python -m pip install -e ".[plot]"
 ```
 
+## Demo of Flat Tori Comparison
+
+You should be able to open and run this demo notebook `experiments/flat_tori_shapecomp_demo.ipynb`
+
+
 ## Smoke run
 
 ```bash
@@ -65,6 +70,3 @@ uv run python experiments/run.py --config experiments/smoke.yaml
 
 This uses the tracked fixture under `data/fixtures/` with a tiny iteration count.
 
-## License
-
-See `LICENSE`. ShapeComp and its native dependencies retain their own licenses.
