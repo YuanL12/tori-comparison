@@ -31,17 +31,14 @@ tori-comparison/
 
 ## Prerequisites
 
-1. A working ShapeComp install (`shapecomp>=0.1,<0.2`), including its native
+1. A working [ShapeComp](https://github.com/YuanL12/shapecomp) install (`shapecomp>=0.1,<0.2`), including its native
    dependencies (CGAL, Boost program_options, ANN, CMake/Ninja).
 2. Mesh inputs (see [data/README.md](data/README.md)). Tracked fixtures are only
    enough for import/`--help` and a tiny CPU smoke; full paper configs need the
    external dataset.
 
-## Install (sibling development with uv)
 
 ```bash
-# From /home/yluo/Documents with shapecomp/ and tori-comparison/ as siblings
-cd tori-comparison
 uv python pin 3.12
 uv sync --extra plot
 uv run python -c "import shapecomp, torch; print(shapecomp.__name__, torch.__version__)"
