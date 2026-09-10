@@ -37,7 +37,7 @@ tori-comparison/
    enough for import/`--help` and a tiny CPU smoke; full paper configs need the
    external dataset.
 
-
+## Install (uv)
 ```bash
 uv python pin 3.12
 uv sync --extra plot
