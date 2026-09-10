@@ -27,6 +27,8 @@ plot_data/
 *.png
 *.svg
 *.pdf
+!tori-paper-figures/*.png
+!tori-paper-figures/*.pdf
 
 # Ignore meshes by default; track small fixtures explicitly.
 *.obj

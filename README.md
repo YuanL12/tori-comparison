@@ -3,15 +3,30 @@ Compare two triangulated tori without requiring landmarks or same triangulation/
 
 Experiments and reproducibility code for paper: "Computing a Metric on the Shape Space of Tori", to be appear in ACM Transactions on Graphics 2026. 
 
+## Selected Results
+We compute a pairwise distance matrix for five tori of revolution with increasing minor radii, representing approximately a geodesic in the shape space. 
+
+![Pairwise distances on a torus family](tori-paper-figures/siggraph_rep.png)
+
+Our method minimizes a geometric energy $E(f)$ on a map $f: T_1 \to T_2$ between two tori. Two maps $\phi_1$ and $\phi_2$ are parameterizations of two mugs from the unit square. The red and blue loops are the two canonical homology generators.
+![Parameterization map](tori-paper-figures/parameterization_map.png)
+
+We use eight Thingi10K-derived meshes of 4 groups to compute the pairwise distance matrix:
+![Thingi10K mesh strip](tori-paper-figures/thingi10k_eight_meshes_strip.png)
+
+Clustering eight meshes with our distance:
+![Thingi10K pairwise min-energy heatmap](tori-paper-figures/thingi10k_clustering_result.png)
+
 ## Layout
 
 ```text
 tori-comparison/
-├── pyproject.toml
-├── src/tori_comparison/   # shared experiment package (formerly experiments/core)
-├── experiments/           # runners and one-off analyses
-├── data/                  # fixtures + dataset acquisition notes
-└── README.md
+    ├── pyproject.toml
+    ├── src/tori_comparison/   # shared experiment package (formerly experiments/core)
+    ├── experiments/           # runners and one-off analyses
+    ├── data/                  # fixtures + dataset acquisition notes
+    ├── tori-paper-figures/    # selected paper figures
+    └── README.md
 ```
 
 ## Prerequisites
