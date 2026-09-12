@@ -1,7 +1,7 @@
 # Tori Comparison
-Compare two triangulated tori without requiring landmarks or same triangulation/correspondence.
+Compare two triangulated tori without requiring landmarks or the same triangulation/correspondence.
 
-Experiments and reproducibility code for paper: "Computing a Metric on the Shape Space of Tori", to be appear in ACM Transactions on Graphics 2026. 
+Experiments and reproducibility code for the paper: "Computing a Metric on the Shape Space of Tori", to appear in ACM Transactions on Graphics (SIGGRAPH Aisa) 2026. 
 
 ## Selected Results
 We compute a pairwise distance matrix for five tori of revolution with increasing minor radii, representing approximately a geodesic in the shape space. 
