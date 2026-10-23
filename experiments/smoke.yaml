@@ -24,8 +24,8 @@ Tutte_embedding_type: "Uniform" # Uniform, coTan, MeanValue, Authalic
 Tutte_embedding_type_minimal: false
 
 # Path to the domain mesh and codomain mesh
-obj_path1: "../data/fixtures/torus.obj"
-obj_path2: "../data/fixtures/torus.obj"
+obj_path1: "data/fixtures/torus.obj"
+obj_path2: "data/fixtures/torus.obj"
 # a: "data/synthetic/torus_ratio_0.2_n_theta_10_n_phi_10.obj"
 # a2: "data/synthetic/torus_ratio_0.2_n_theta_20_n_phi_10.obj"
 # b: "data/synthetic/torus_ratio_0.5_n_theta_10_n_phi_10.obj"
